@@ -1,0 +1,49 @@
+
+
+
+<mat-card class="mat-elevation-z2 mt-3" >
+  <h1 class="mt-2">{{ formTitle }} Post</h1>
+  <hr />
+  <form
+    #myForm="ngForm"
+    (ngSubmit)="myForm.form.valid && saveBlogPost()"
+    accept-charset="UTF-8"
+    novalidate
+  >
+    <input
+      type="text"
+      class="blogHeader"
+      placeholder="Add title..."
+      class="form-control"
+      name="postTitle"
+      [(ngModel)]="postData.title"
+      #postTitle="ngModel"
+      required
+    />
+    <span
+      class="text-danger"
+      *ngIf="myForm.submitted && postTitle.errors?.required"
+    >
+      Title is required
+    </span>
+    <br />
+    <div class="form-group">
+      
+  
+      
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="myckeditor" placeholder="Add description..." [(ngModel)]="postData.content" #myckeditor="ngModel" ></textarea>
+        <br>
+        <br>
+        <label for="exampleFormControlFile1">Choose Photo that relate</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="uploadImg($event)">
+  
+      
+    </div>
+    <mat-card-actions>
+      <div fxflex></div>
+      <button type="submit" mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="warn" (click)="cancel()">CANCEL</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+

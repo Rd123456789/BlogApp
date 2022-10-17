@@ -1,0 +1,25 @@
+a:not([href]):not([tabindex]) {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #1565c0;
+}
+
+.full-width {
+  width: 100%;
+}
+ .smallText{
+  font-size: 12px;
+  font-style: italic;
+}
+.title{
+  font-weight: bold;
+  font-size: 22px
+}
+
+
+#new{
+  font-style: italic;
+}
+.justCont{
+  font-size: 1px;
+}

@@ -1,0 +1,28 @@
+<mat-toolbar class="nav-bar mat-elevation-z2">
+
+  <button mat-button [routerLink]="['/']" class="bigLogo">BlogMatters<sup>&copy;</sup></button>
+  <ng-container *ngIf="appUser">
+    <button
+      mat-button
+      [routerLinkActive]="['link-active']"
+      [routerLink]="['/addpost']"
+      class="bigLogo2"
+    >
+      Add Post
+    </button>
+  </ng-container>
+  <span class="spacer"></span>
+  
+  <ng-template #anonymousUser>
+    <button mat-button (click)="login()"><span id="namelogin">Login with</span> <i class="fa-brands fa-google googli"></i></button>
+  </ng-template>
+  <ng-container *ngIf="appUser; else anonymousUser">
+    <img mat-card-avatar class="user-avatar smallerimg" src="{{ appUser.photoURL }}" />
+    <button mat-button [matMenuTriggerFor]="menu" class="smaller">
+      {{ appUser.name | titlecase }}<span><i class="fa-solid fa-caret-down littleM"></i></span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </ng-container>
+</mat-toolbar>
